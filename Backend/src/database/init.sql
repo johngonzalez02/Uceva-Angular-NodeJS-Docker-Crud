@@ -17,3 +17,14 @@ CREATE TABLE IF NOT EXISTS courses (
     semester INTEGER NOT NULL CHECK (semester BETWEEN 1 AND 10),
     status BOOLEAN DEFAULT TRUE
 );
+
+CREATE TABLE IF NOT EXISTS teachers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    phone VARCHAR(10) UNIQUE NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    specialty VARCHAR(100) NOT NULL,
+    hiredate DATE NOT NULL,
+    status BOOLEAN DEFAULT TRUE
+);
