@@ -54,3 +54,32 @@ INSERT INTO courses (
 ('Desarrollo de Aplicaciones Móviles', 'Fundamentos y desarrollo de aplicaciones para dispositivos móviles.', 3, 7, TRUE),
 
 ('Inteligencia Artificial', 'Fundamentos de inteligencia artificial, aprendizaje automático y algoritmos inteligentes.', 4, 8, TRUE);
+
+INSERT INTO teachers (
+    name,
+    email,
+    phone,
+    department,
+    specialty,
+    hiredate,
+    status
+) VALUES
+('Ricardo Mendoza', 'ricardo.mendoza@uceva.edu.co', '3141112233', 'Ingenieria de Sistemas', 'Desarrollo Web', '2015-02-10', TRUE),
+
+('Patricia Salazar', 'patricia.salazar@uceva.edu.co', '3152223344', 'Ingenieria de Sistemas', 'Bases de Datos', '2012-08-01', TRUE),
+
+('Felipe Ocampo', 'felipe.ocampo@uceva.edu.co', '3163334455', 'Ciencias Basicas', 'Matematicas', '2010-01-18', TRUE),
+
+('Natalia Vargas', 'natalia.vargas@uceva.edu.co', '3174445566', 'Ingenieria de Sistemas', 'Inteligencia Artificial', '2018-07-23', TRUE),
+
+('Hector Duque', 'hector.duque@uceva.edu.co', '3185556677', 'Ingenieria de Sistemas', 'Redes de Computadores', '2014-03-05', TRUE),
+
+('Luisa Fernandez', 'luisa.fernandez@uceva.edu.co', '3196667788', 'Ingenieria de Sistemas', 'Ingenieria de Software', '2016-09-12', TRUE),
+
+('Mauricio Rios', 'mauricio.rios@uceva.edu.co', '3207778899', 'Ciencias Basicas', 'Fisica', '2009-06-30', TRUE),
+
+('Sandra Beltran', 'sandra.beltran@uceva.edu.co', '3218889900', 'Ingenieria de Sistemas', 'Arquitectura de Software', '2019-02-04', TRUE),
+
+('Jorge Cardona', 'jorge.cardona@uceva.edu.co', '3229990011', 'Ingenieria de Sistemas', 'Sistemas Operativos', '2013-11-19', TRUE),
+
+('Diana Osorio', 'diana.osorio@uceva.edu.co', '3230001122', 'Ingenieria de Sistemas', 'Desarrollo Movil', '2020-01-27', TRUE);
