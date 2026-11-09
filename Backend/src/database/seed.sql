@@ -83,3 +83,30 @@ INSERT INTO teachers (
 ('Jorge Cardona', 'jorge.cardona@uceva.edu.co', '3229990011', 'Ingenieria de Sistemas', 'Sistemas Operativos', '2013-11-19', TRUE),
 
 ('Diana Osorio', 'diana.osorio@uceva.edu.co', '3230001122', 'Ingenieria de Sistemas', 'Desarrollo Movil', '2020-01-27', TRUE);
+
+INSERT INTO classrooms (
+    name,
+    building,
+    capacity,
+    type,
+    status
+) VALUES
+('Aula 101', 'Bloque A', 35, 'Aula', TRUE),
+
+('Aula 102', 'Bloque A', 35, 'Aula', TRUE),
+
+('Aula 201', 'Bloque A', 40, 'Aula', TRUE),
+
+('Laboratorio de Sistemas 1', 'Bloque B', 30, 'Laboratorio', TRUE),
+
+('Laboratorio de Sistemas 2', 'Bloque B', 30, 'Laboratorio', TRUE),
+
+('Laboratorio de Redes', 'Bloque B', 25, 'Laboratorio', TRUE),
+
+('Sala de Computo 1', 'Bloque C', 40, 'Sala de Computo', TRUE),
+
+('Sala de Computo 2', 'Bloque C', 40, 'Sala de Computo', TRUE),
+
+('Auditorio Principal', 'Bloque D', 200, 'Auditorio', TRUE),
+
+('Aula 305', 'Bloque C', 45, 'Aula', TRUE);
