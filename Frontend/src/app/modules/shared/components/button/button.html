@@ -1,0 +1,13 @@
+<button type="button" class="btn" [ngClass]="[
+        (config.outline ? 'btn-outline-' : 'btn-') + config.type,
+        config.size ? 'btn-' + config.size : ''
+    ]" (click)="click()">
+    @if(config.icon) {
+    <i class="bi" [ngClass]="'bi-' + config.icon"></i>
+    }
+    @if (config.title) {
+    <ng-container class="ms-2">
+        {{ config.title }}
+    </ng-container>
+    }
+</button>

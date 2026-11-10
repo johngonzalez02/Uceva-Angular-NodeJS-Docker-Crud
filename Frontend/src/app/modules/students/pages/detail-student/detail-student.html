@@ -1,0 +1,171 @@
+<app-back />
+<div class="container-fluid mt-3">
+
+    <!-- Header -->
+    <div class="mb-4">
+        <h3 class="fw-bold mb-1">Detalle del estudiante</h3>
+        <p class="text-muted mb-0">
+            Información general y académica del estudiante.
+        </p>
+    </div>
+
+    @if (student) {
+
+        <!-- Student Header -->
+        <div class="card border mb-4">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center gap-3">
+
+                    <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center"
+                         style="width: 65px; height: 65px; font-size: 2rem;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-1">{{ student.name }}</h4>
+                        <span class="text-muted">
+                            Estudiante #{{ student.id }}
+                        </span>
+                    </div>
+
+                    <span
+                        class="badge rounded-pill"
+                        [ngClass]="student.status ? 'text-bg-success' : 'text-bg-danger'">
+                        {{ student.status ? 'Activo' : 'Inactivo' }}
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Personal Information -->
+            <div class="col-12 col-lg-7">
+                <div class="card border h-100">
+
+                    <div class="card-header bg-white py-3">
+                        <h5 class="fw-semibold mb-0">
+                            <i class="bi bi-person-vcard text-primary me-2"></i>
+                            Información personal
+                        </h5>
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div class="row g-4">
+
+                            <div class="col-12">
+                                <small class="text-muted d-block mb-1">Nombre completo</small>
+                                <span class="fw-medium">{{ student.name }}</span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <small class="text-muted d-block mb-1">Correo electrónico</small>
+                                <span>
+                                    <i class="bi bi-envelope text-secondary me-2"></i>
+                                    {{ student.email }}
+                                </span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <small class="text-muted d-block mb-1">Teléfono</small>
+                                <span>
+                                    <i class="bi bi-telephone text-secondary me-2"></i>
+                                    {{ student.phone }}
+                                </span>
+                            </div>
+
+                            <div class="col-12">
+                                <small class="text-muted d-block mb-1">Dirección</small>
+                                <span>
+                                    <i class="bi bi-geo-alt text-secondary me-2"></i>
+                                    {{ student.address }}
+                                </span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <small class="text-muted d-block mb-1">Fecha de nacimiento</small>
+                                <span>
+                                    <i class="bi bi-calendar-event text-secondary me-2"></i>
+                                    {{ student.birthdate | date:'dd/MM/yyyy' }}
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Information -->
+            <div class="col-12 col-lg-5">
+                <div class="card border h-100">
+
+                    <div class="card-header bg-white py-3">
+                        <h5 class="fw-semibold mb-0">
+                            <i class="bi bi-mortarboard text-primary me-2"></i>
+                            Información académica
+                        </h5>
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div class="mb-4">
+                            <small class="text-muted d-block mb-2">Semestre actual</small>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-3 bg-primary bg-opacity-10 text-primary p-3">
+                                    <i class="bi bi-book fs-3"></i>
+                                </div>
+
+                                <div>
+                                    <h2 class="fw-bold mb-0">
+                                        {{ student.semester }}°
+                                    </h2>
+                                    <small class="text-muted">Semestre académico</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="mb-4">
+                            <small class="text-muted d-block mb-2">Estado del estudiante</small>
+
+                            @if (student.status) {
+                                <span class="badge text-bg-success">
+                                    <i class="bi bi-check-circle me-1"></i>
+                                    Activo
+                                </span>
+                            } @else {
+                                <span class="badge text-bg-danger">
+                                    <i class="bi bi-x-circle me-1"></i>
+                                    Inactivo
+                                </span>
+                            }
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <small class="text-muted d-block mb-2">Código de estudiante</small>
+                            <span class="fw-semibold">#{{ student.id }}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    } @else {
+
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            No se encontró información del estudiante.
+        </div>
+
+    }
+
+</div>

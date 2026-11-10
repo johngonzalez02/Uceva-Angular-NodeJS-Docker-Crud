@@ -1,0 +1,63 @@
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Semestre</th>
+                <th scope="col">Estado</th>
+                <th scope="col" class="text-center">Opciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (student of students; track student.id) {
+                <tr>
+                    <td>{{ student.id }}</td>
+
+                    <td class="fw-semibold">
+                        {{ student.name }}
+                    </td>
+
+                    <td>{{ student.email }}</td>
+
+                    <td>
+                        <span class="badge text-bg-info">
+                            {{ student.semester }}°
+                        </span>
+                    </td>
+
+                    <td>
+                        @if (student.status) {
+                            <span class="badge text-bg-success">
+                                Activo
+                            </span>
+                        } @else {
+                            <span class="badge text-bg-danger">
+                                Inactivo
+                            </span>
+                        }
+                    </td>
+
+                    <!-- Options -->
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <app-button [config]="configDetailButton" (onClick)="click(student.id, 'detail')" />
+                            <app-button [config]="configEditButton" (onClick)="click(student.id, 'edit')" />
+                            <app-button [config]="configDeleteButton" (onClick)="click(student.id, 'delete')" />
+                        </div>
+                    </td>
+                </tr>
+            } @empty {
+                <tr>
+                    <td colspan="9" class="text-center py-4 text-muted">
+                        No hay estudiantes registrados.
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
