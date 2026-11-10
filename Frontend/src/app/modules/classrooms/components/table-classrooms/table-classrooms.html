@@ -1,1 +1,65 @@
-<p>Tabla de salones</p>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Bloque</th>
+                <th scope="col">Capacidad</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Estado</th>
+                <th scope="col" class="text-center">Opciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (classroom of classrooms; track classroom.id) {
+                <tr>
+                    <td>{{ classroom.id }}</td>
+
+                    <td class="fw-semibold">
+                        {{ classroom.name }}
+                    </td>
+
+                    <td>{{ classroom.building }}</td>
+
+                    <td>{{ classroom.capacity }}</td>
+
+                    <td>
+                        <span class="badge text-bg-info">
+                            {{ classroom.type }}
+                        </span>
+                    </td>
+
+                    <td>
+                        @if (classroom.status) {
+                            <span class="badge text-bg-success">
+                                Disponible
+                            </span>
+                        } @else {
+                            <span class="badge text-bg-danger">
+                                No disponible
+                            </span>
+                        }
+                    </td>
+
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <app-button [config]="configDetailButton" (onClick)="click(classroom.id, 'detail')" />
+                            <app-button [config]="configEditButton" (onClick)="click(classroom.id, 'edit')" />
+                            <app-button [config]="configDeleteButton" (onClick)="click(classroom.id, 'delete')" />
+                        </div>
+                    </td>
+                </tr>
+            } @empty {
+                <tr>
+                    <td colspan="7" class="text-center py-4 text-muted">
+                        No hay salones registrados.
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
