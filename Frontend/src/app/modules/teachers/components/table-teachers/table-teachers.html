@@ -1,1 +1,65 @@
-<p>Tabla de profesores</p>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Especialidad</th>
+                <th scope="col">Estado</th>
+                <th scope="col" class="text-center">Opciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (teacher of teachers; track teacher.id) {
+                <tr>
+                    <td>{{ teacher.id }}</td>
+
+                    <td class="fw-semibold">
+                        {{ teacher.name }}
+                    </td>
+
+                    <td>{{ teacher.email }}</td>
+
+                    <td>{{ teacher.department }}</td>
+
+                    <td>
+                        <span class="badge text-bg-info">
+                            {{ teacher.specialty }}
+                        </span>
+                    </td>
+
+                    <td>
+                        @if (teacher.status) {
+                            <span class="badge text-bg-success">
+                                Activo
+                            </span>
+                        } @else {
+                            <span class="badge text-bg-danger">
+                                Inactivo
+                            </span>
+                        }
+                    </td>
+
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <app-button [config]="configDetailButton" (onClick)="click(teacher.id, 'detail')" />
+                            <app-button [config]="configEditButton" (onClick)="click(teacher.id, 'edit')" />
+                            <app-button [config]="configDeleteButton" (onClick)="click(teacher.id, 'delete')" />
+                        </div>
+                    </td>
+                </tr>
+            } @empty {
+                <tr>
+                    <td colspan="7" class="text-center py-4 text-muted">
+                        No hay profesores registrados.
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
