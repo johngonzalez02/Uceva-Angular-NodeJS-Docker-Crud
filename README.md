@@ -1,4 +1,4 @@
-# Laboratorio II - Programación en Ambiente Web I
+# Laboratorios II y III - Programación en Ambiente Web I
 
 Backend en Node.js con TypeScript, Express y PostgreSQL (Docker). Tiene cuatro módulos con CRUD completo:
 
@@ -86,3 +86,51 @@ Los dos módulos nuevos tienen las mismas cinco operaciones:
 - `400` datos inválidos o id no numérico
 - `404` registro no encontrado
 - `409` correo, teléfono o nombre ya registrado
+
+## Frontend (Laboratorio III)
+
+Aplicación en Angular 20 con Bootstrap 5 que consume el backend. Tiene tres módulos: Estudiantes, Profesores y Salones.
+
+| Módulo       | Ruta del frontend | Endpoint del backend |
+|--------------|-------------------|----------------------|
+| Estudiantes  | `/students`       | `/api/students`      |
+| Profesores   | `/teachers`       | `/api/teachers`      |
+| Salones      | `/classrooms`     | `/api/classrooms`    |
+
+### Estructura de cada módulo
+
+```
+Frontend/src/app/modules/<modulo>/
+  components/table-*/   tabla del listado
+  interfaces/           tipos del módulo
+  pages/                list-*, create-*, detail-*, update-*
+  services/             servicio con HttpClient
+```
+
+Las rutas están en `Frontend/src/app/app.routes.ts` y cada módulo tiene `list`, `create`, `detail/:id` y `update/:id`.
+
+### Ejecución
+
+El backend debe estar corriendo antes de abrir el frontend:
+
+```bash
+cd Backend
+docker compose up -d
+npm install
+npm run db:init
+npm run db:seed
+npm start
+```
+
+En otra terminal:
+
+```bash
+cd Frontend
+npm install
+npm start
+```
+
+- Frontend: http://localhost:4200
+- Backend: http://localhost:3000/api
+
+Los mensajes de error del backend (datos inválidos, correo o nombre repetido, registro no encontrado) se muestran al usuario en una notificación.
