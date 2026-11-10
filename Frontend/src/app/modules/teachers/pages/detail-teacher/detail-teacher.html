@@ -1,1 +1,145 @@
-<p>Detalle de profesor</p>
+<app-back />
+<div class="container-fluid mt-3">
+
+    <div class="mb-4">
+        <h3 class="fw-bold mb-1">Detalle del profesor</h3>
+        <p class="text-muted mb-0">
+            Información general y laboral del profesor.
+        </p>
+    </div>
+
+    @if (teacher) {
+
+        <div class="card border mb-4">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center gap-3">
+
+                    <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center"
+                         style="width: 65px; height: 65px; font-size: 2rem;">
+                        <i class="bi bi-person-workspace"></i>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-1">{{ teacher.name }}</h4>
+                        <span class="text-muted">
+                            Profesor #{{ teacher.id }}
+                        </span>
+                    </div>
+
+                    <span
+                        class="badge rounded-pill"
+                        [ngClass]="teacher.status ? 'text-bg-success' : 'text-bg-danger'">
+                        {{ teacher.status ? 'Activo' : 'Inactivo' }}
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-12 col-lg-7">
+                <div class="card border h-100">
+
+                    <div class="card-header bg-white py-3">
+                        <h5 class="fw-semibold mb-0">
+                            <i class="bi bi-person-vcard text-primary me-2"></i>
+                            Información personal
+                        </h5>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <div class="row g-4">
+
+                            <div class="col-12">
+                                <small class="text-muted d-block mb-1">Nombre completo</small>
+                                <span class="fw-medium">{{ teacher.name }}</span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <small class="text-muted d-block mb-1">Correo electrónico</small>
+                                <span>
+                                    <i class="bi bi-envelope text-secondary me-2"></i>
+                                    {{ teacher.email }}
+                                </span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <small class="text-muted d-block mb-1">Teléfono</small>
+                                <span>
+                                    <i class="bi bi-telephone text-secondary me-2"></i>
+                                    {{ teacher.phone }}
+                                </span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <small class="text-muted d-block mb-1">Fecha de contratación</small>
+                                <span>
+                                    <i class="bi bi-calendar-event text-secondary me-2"></i>
+                                    {{ teacher.hiredate | date:'dd/MM/yyyy' }}
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-5">
+                <div class="card border h-100">
+
+                    <div class="card-header bg-white py-3">
+                        <h5 class="fw-semibold mb-0">
+                            <i class="bi bi-briefcase text-primary me-2"></i>
+                            Información laboral
+                        </h5>
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <div class="mb-4">
+                            <small class="text-muted d-block mb-2">Departamento</small>
+                            <span class="fw-semibold">{{ teacher.department }}</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="mb-4">
+                            <small class="text-muted d-block mb-2">Especialidad</small>
+                            <span class="badge text-bg-info">{{ teacher.specialty }}</span>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <small class="text-muted d-block mb-2">Estado del profesor</small>
+
+                            @if (teacher.status) {
+                                <span class="badge text-bg-success">
+                                    <i class="bi bi-check-circle me-1"></i>
+                                    Activo
+                                </span>
+                            } @else {
+                                <span class="badge text-bg-danger">
+                                    <i class="bi bi-x-circle me-1"></i>
+                                    Inactivo
+                                </span>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    } @else {
+
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            No se encontró información del profesor.
+        </div>
+
+    }
+
+</div>
